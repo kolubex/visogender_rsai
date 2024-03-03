@@ -22,7 +22,8 @@ from src.analysis_utils import get_subset_dataframe, load_benchmark_dict, single
 clip_models = ["clip"]
 captioning_models = ["blipv2"]
 
-model_list = clip_models + captioning_models
+# model_list = clip_models + captioning_models
+model_list = clip_models
 
 for model_name in model_list:
 

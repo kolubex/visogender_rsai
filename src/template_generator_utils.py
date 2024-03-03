@@ -49,7 +49,6 @@ def load_metadata_to_dict(filepath: str, context: str):
         Tuple with two dictionary (for each context) of dictionaries with metadata for all images IDX
     """
     op_idx_metadata_dict, oo_idx_metadata_dict = {}, {}
-
     with open(filepath, "r") as file:
         for enum, line in enumerate(file):
             try:
@@ -60,11 +59,11 @@ def load_metadata_to_dict(filepath: str, context: str):
                     sector = values[1]
                     specialisation = values[2]
                     occ = values[3]
-                    url = values[5]
+                    url = values[-1]
                     licence = bool(values[6])
                     occ_gender = values[7]
-                    error_code = values[-2]
-                    annotator = values[-1]
+                    error_code = values[-3]
+                    annotator = values[-2]
 
                     if context == "OP":
                         par = values[4]

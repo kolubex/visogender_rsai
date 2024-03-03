@@ -91,9 +91,11 @@ def get_image(image_url: str):
     Args:
         image_url: URL to image hosted online
     """
-    headers = {"User-Agent": "OxAI"}
-    r = requests.get(image_url, stream=True, headers=headers)
-    return Image.open(r.raw).convert("RGB")
+    # headers = {"User-Agent": "OxAI"}
+    # r = requests.get(image_url, stream=True, headers=headers)
+    # return Image.open(r.raw).convert("RGB")
+    # open image path and convert to RGB
+    return Image.open(image_url).convert("RGB")
 
 def load_full_dataframe(directory_path)-> pd.DataFrame:
     """

@@ -15,7 +15,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 def clip_set_up_model_processor():
     model, processor = clip.load("ViT-B/32", device)
-    return model, processor
+    return model, processor  
 
 def clip_model(phrase_list, url_list, model, processor):
     """"

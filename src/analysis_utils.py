@@ -142,7 +142,6 @@ def check_neutral_groundtruth_match(result_dir: str, save_path:str, file_desc: s
         for template in template_types:
             for row_index, row in results_df.iterrows():
 
-
                 if context_OP:
                     
                     if template == "occ_first":

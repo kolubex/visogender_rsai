@@ -13,16 +13,17 @@ from tqdm import tqdm
 from clip_input_params import clip_input_params, main_dir
 
 sys.path.append(main_dir) 
-
+print("start")
 from src.template_generator_utils import set_up_parameters, load_metadata_to_dict, occupation_template_sentences_all_pronouns
 from src.data_utils import load_visogender_data, save_dict_json
 from src.clip_set_up import clip_set_up_model_processor, clip_model
-
+print("start")
 experiment_name, bias_experiments, gender_idx_dict = set_up_parameters(clip_input_params)
-
+print("start")
 # Do Occupation-Participant (OP) and Occupation-Object (OO) experiments
 for context_args in [(True, False), (False, True)]:
     context_OP, context_OO = context_args
+    print("first loop")
 
     for model_name in clip_input_params["clip_models"]:
 
@@ -94,6 +95,9 @@ for context_args in [(True, False), (False, True)]:
 
                     except PIL.UnidentifiedImageError:
                         print(f"Image failed to load {IDX_dict[metadata_key]['occ']}")
+                        with open("failed_images.txt", "a") as file:
+                            file.write(f"Image failed to load {IDX_dict[metadata_key]['occ']}\n")
+                            file.write(f"URL: {IDX_dict[metadata_key]['url']}\n")
                         continue
 
                     if context_OP:
