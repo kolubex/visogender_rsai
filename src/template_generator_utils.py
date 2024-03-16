@@ -122,7 +122,7 @@ def occupation_template_sentences_all_pronouns(occupation: str, template_sentenc
     if other_participant is not None or other_object is not None:
         if model_domain  == "CLIP":
             if context_op:
-                part_index = sentence_components.index("$PARTICIPANT")
+                part_index = sentence_components.index("$PARTICIPANT") #!! @Keerthi, change is also expected here, as this function is making the sentence for the par_first case. (My suggestion => May be you are supposed to define similar function like thsi for newer templates)
                 sentence_components[part_index] = other_participant
             elif context_oo:
                 obj_index = sentence_components.index("$OBJECT")

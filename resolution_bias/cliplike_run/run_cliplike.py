@@ -32,6 +32,8 @@ for context_args in [(True, False), (False, True)]:
         if model_name == "clip":
             model, processor = clip_set_up_model_processor()
 
+        print("model set")
+
         if context_OP:
             context = "context_OP"
             sentence_path, template_occ_first, template_par_first = load_visogender_data(clip_input_params, context_OP, context_OO)
@@ -90,6 +92,7 @@ for context_args in [(True, False), (False, True)]:
                             continue
 
                     try:
+                        # print(f"male_sent: {male_sent},female_sent: {female_sent}")
                         logits_list = clip_model([male_sent, female_sent, neutral_sent], [url], model, processor)
                         logits_dict = {"his" : logits_list[0], "her": logits_list[1], "their": logits_list[2]}
 
